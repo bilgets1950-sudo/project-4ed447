@@ -63,7 +63,7 @@ button { color: inherit; cursor: pointer; }
 .listing-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 7px 0; }.listing-tags span { display: inline-flex; align-items: center; border: 1px solid #4b3440; border-radius: 999px; padding: 4px 7px; background: #2a202b; color: #ffad91; font-size: 10px; line-height: 1; }.detail-tags { margin-top: 10px; }.gallery-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: #1d1e28; border: 1px solid var(--line); color: var(--muted); font-size: 12px; }.gallery-controls { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: flex; gap: 6px; }.gallery-controls button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.45); }.gallery-controls button.active { background: #ff8168; transform: scale(1.25); }
 
 /* --- Carousel / gallery --- */
-.gallery { position: relative; }
+.gallery { position: relative; height: auto; background: none; margin: 4px 0 16px; }
 .gallery-viewport { position: relative; width: 100%; aspect-ratio: 16/10; border-radius: 17px; overflow: hidden; border: 1px solid var(--line); background: #1d1e28; margin: 16px 0 6px; touch-action: pan-y; }
 .gallery-track { display: flex; height: 100%; transition: transform .35s cubic-bezier(.22,.61,.36,1); }
 .gallery-slide { flex: 0 0 100%; height: 100%; }
