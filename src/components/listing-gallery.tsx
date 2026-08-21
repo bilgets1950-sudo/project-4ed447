@@ -26,11 +26,11 @@ export function ListingGallery({ photos, title }: { photos: string[]; title: str
       <div
         className="gallery-viewport"
         onTouchStart={(e) => {
-          startX.current = e.touches[0].clientX;
+          startX.current = e.touches[0]?.clientX ?? null;
         }}
         onTouchEnd={(e) => {
           if (startX.current === null) return;
-          const delta = e.changedTouches[0].clientX - startX.current;
+          const delta = (e.changedTouches[0]?.clientX ?? startX.current) - startX.current;
           if (Math.abs(delta) > 40) go(index + (delta < 0 ? 1 : -1));
           startX.current = null;
         }}
