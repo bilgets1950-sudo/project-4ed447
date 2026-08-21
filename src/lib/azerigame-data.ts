@@ -50,10 +50,38 @@ export const BUYER_FEE_MULTIPLIER = 1.1;
 export const buyerPrice = (price: number) => Number(price) * BUYER_FEE_MULTIPLIER;
 
 export const GAMES: GameCard[] = [
-  { id: "free-fire", name: "Free Fire", description: "Аккаунты и донат", cover_url: null, logo: "FF", tone: "game-red" },
-  { id: "pubg-mobile", name: "PUBG Mobile", description: "Аккаунты и донат", cover_url: null, logo: "P", tone: "game-gold" },
-  { id: "brawl-stars", name: "Brawl Stars", description: "Аккаунты и донат", cover_url: null, logo: "BS", tone: "game-blue" },
-  { id: "clash-of-clans", name: "Clash of Clans", description: "Аккаунты и донат", cover_url: null, logo: "COC", tone: "game-green" },
+  {
+    id: "free-fire",
+    name: "Free Fire",
+    description: "Аккаунты и донат",
+    cover_url: null,
+    logo: "FF",
+    tone: "game-red",
+  },
+  {
+    id: "pubg-mobile",
+    name: "PUBG Mobile",
+    description: "Аккаунты и донат",
+    cover_url: null,
+    logo: "P",
+    tone: "game-gold",
+  },
+  {
+    id: "brawl-stars",
+    name: "Brawl Stars",
+    description: "Аккаунты и донат",
+    cover_url: null,
+    logo: "BS",
+    tone: "game-blue",
+  },
+  {
+    id: "clash-of-clans",
+    name: "Clash of Clans",
+    description: "Аккаунты и донат",
+    cover_url: null,
+    logo: "COC",
+    tone: "game-green",
+  },
 ];
 
 const shot = (seed: string) => `https://picsum.photos/seed/${seed}/900/560`;

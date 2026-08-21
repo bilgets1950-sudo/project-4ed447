@@ -49,7 +49,11 @@ export function AuthModal({
           <p>Безопасные сделки, кошелёк и чаты с продавцами.</p>
         </div>
 
-        <button className="demo-login-button" type="button" onClick={() => onSuccess(makeUser("Demo User"))}>
+        <button
+          className="demo-login-button"
+          type="button"
+          onClick={() => onSuccess(makeUser("Demo User"))}
+        >
           <Sparkles size={16} /> Войти как демо-пользователь
         </button>
         <div className="modal-divider">или</div>
@@ -58,24 +62,48 @@ export function AuthModal({
           {mode === "register" && (
             <label>
               Никнейм
-              <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Ваш никнейм" />
+              <input
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Ваш никнейм"
+              />
             </label>
           )}
           <label>
             Email
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@mail.az" required />
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@mail.az"
+              required
+            />
           </label>
           <label>
             Пароль
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••" required />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••"
+              required
+            />
           </label>
-          {error && <p className="muted" style={{ color: "#ff8066", fontSize: 12 }}>{error}</p>}
+          {error && (
+            <p className="muted" style={{ color: "#ff8066", fontSize: 12 }}>
+              {error}
+            </p>
+          )}
           <button className="publish-button" type="submit">
             {mode === "login" ? "Войти" : "Зарегистрироваться"}
           </button>
         </form>
 
-        <button className="modal-switch" type="button" onClick={() => setMode(mode === "login" ? "register" : "login")}>
+        <button
+          className="modal-switch"
+          type="button"
+          onClick={() => setMode(mode === "login" ? "register" : "login")}
+        >
           {mode === "login" ? "Нет аккаунта? Зарегистрируйтесь" : "Уже есть аккаунт? Войти"}
         </button>
       </div>

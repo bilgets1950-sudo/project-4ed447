@@ -69,14 +69,27 @@ export function CreateOfferForm({
       <form className="modal-form" onSubmit={submit}>
         <label>
           Название
-          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Например: Аккаунт с редкими скинами" />
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Например: Аккаунт с редкими скинами"
+          />
         </label>
         <label>
           Категория
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            style={{ display: "block", width: "100%", marginTop: 8, padding: 13, borderRadius: 11, background: "#1d1e28", color: "#eee", border: "1px solid var(--line)" }}
+            style={{
+              display: "block",
+              width: "100%",
+              marginTop: 8,
+              padding: 13,
+              borderRadius: 11,
+              background: "#1d1e28",
+              color: "#eee",
+              border: "1px solid var(--line)",
+            }}
           >
             {CATEGORIES.map((name) => (
               <option key={name} value={name}>
@@ -87,12 +100,22 @@ export function CreateOfferForm({
         </label>
         <label>
           Цена, AZN
-          <input value={price} inputMode="decimal" onChange={(e) => setPrice(e.target.value)} placeholder="120" />
+          <input
+            value={price}
+            inputMode="decimal"
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="120"
+          />
         </label>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
           <label>
             Уровень
-            <input value={level} inputMode="numeric" onChange={(e) => setLevel(e.target.value)} placeholder="60" />
+            <input
+              value={level}
+              inputMode="numeric"
+              onChange={(e) => setLevel(e.target.value)}
+              placeholder="60"
+            />
           </label>
           <label>
             Ранг
@@ -106,11 +129,22 @@ export function CreateOfferForm({
             onChange={(e) => setDescription(e.target.value)}
             rows={4}
             placeholder="Что входит в аккаунт, как проходит передача"
-            style={{ display: "block", width: "100%", marginTop: 8, padding: 13, borderRadius: 11, background: "#1d1e28", color: "#eee", border: "1px solid var(--line)" }}
+            style={{
+              display: "block",
+              width: "100%",
+              marginTop: 8,
+              padding: 13,
+              borderRadius: 11,
+              background: "#1d1e28",
+              color: "#eee",
+              border: "1px solid var(--line)",
+            }}
           />
         </label>
 
-        <span style={{ display: "block", color: "#9d9eae", fontSize: 12, margin: "12px 0 8px" }}>Скриншоты</span>
+        <span style={{ display: "block", color: "#9d9eae", fontSize: 12, margin: "12px 0 8px" }}>
+          Скриншоты
+        </span>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
           {photos.map((photo, index) => (
             <div className="photo-thumb" key={`${index}-${photo.slice(0, 20)}`}>
@@ -128,7 +162,13 @@ export function CreateOfferForm({
           <label className="photo-add">
             <ImagePlus size={18} />
             Добавить
-            <input type="file" accept="image/*" multiple hidden onChange={(e) => addPhotos(e.target.files)} />
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              hidden
+              onChange={(e) => addPhotos(e.target.files)}
+            />
           </label>
         </div>
 

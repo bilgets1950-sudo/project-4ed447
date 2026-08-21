@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { X, CreditCard, Wallet, ShieldCheck, CheckCircle2, Smartphone, Landmark } from "lucide-react";
+import {
+  X,
+  CreditCard,
+  Wallet,
+  ShieldCheck,
+  CheckCircle2,
+  Smartphone,
+  Landmark,
+} from "lucide-react";
 
 export type PayableListing = { id: string; title: string; price_azn: number };
 
@@ -33,7 +41,12 @@ export function PaymentModal({
   }
 
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true" onClick={step === "select" ? onClose : undefined}>
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      onClick={step === "select" ? onClose : undefined}
+    >
       <div className="modal-sheet" onClick={(e) => e.stopPropagation()}>
         {step === "select" && (
           <>
@@ -67,7 +80,12 @@ export function PaymentModal({
                 </button>
               ))}
             </div>
-            <button className="publish-button" type="button" onClick={confirm} style={{ width: "100%" }}>
+            <button
+              className="publish-button"
+              type="button"
+              onClick={confirm}
+              style={{ width: "100%" }}
+            >
               Подтвердить оплату
             </button>
           </>

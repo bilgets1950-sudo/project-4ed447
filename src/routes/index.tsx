@@ -44,7 +44,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Azerigame — маркетплейс игровых аккаунтов" },
       {
         property: "og:description",
-        content: "Покупайте и продавайте аккаунты Free Fire, PUBG Mobile, Brawl Stars и Clash of Clans безопасно.",
+        content:
+          "Покупайте и продавайте аккаунты Free Fire, PUBG Mobile, Brawl Stars и Clash of Clans безопасно.",
       },
     ],
   }),
@@ -112,7 +113,9 @@ function OfferCard({ listing, onClick }: { listing: Listing; onClick: () => void
       <div
         className="offer-image"
         style={{
-          backgroundImage: cover ? `linear-gradient(0deg, rgba(12,13,18,.78), transparent), url(${cover})` : undefined,
+          backgroundImage: cover
+            ? `linear-gradient(0deg, rgba(12,13,18,.78), transparent), url(${cover})`
+            : undefined,
         }}
       >
         <strong>{buyerPrice(listing.price_azn).toFixed(2)} AZN</strong>
@@ -156,7 +159,9 @@ function Catalog({
   const filtered = useMemo(
     () =>
       listings.filter((l) => {
-        const matchesQuery = `${l.title} ${l.description ?? ""}`.toLowerCase().includes(normalizedQuery);
+        const matchesQuery = `${l.title} ${l.description ?? ""}`
+          .toLowerCase()
+          .includes(normalizedQuery);
         const matchesGame = activeGame === "all" || l.game_id === activeGame;
         const matchesCategory = activeCategory === "all" || l.category === activeCategory;
         return matchesQuery && matchesGame && matchesCategory;
@@ -166,7 +171,9 @@ function Catalog({
 
   const countForGame = (id: string) => listings.filter((l) => l.game_id === id).length;
   const countForCategory = (name: string) =>
-    listings.filter((l) => l.category === name && (activeGame === "all" || l.game_id === activeGame)).length;
+    listings.filter(
+      (l) => l.category === name && (activeGame === "all" || l.game_id === activeGame),
+    ).length;
 
   const isFiltered = activeGame !== "all" || activeCategory !== "all" || Boolean(normalizedQuery);
 
@@ -182,7 +189,11 @@ function Catalog({
 
       <div className="searchbox">
         <Search size={18} />
-        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Найти игру или предложение" />
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Найти игру или предложение"
+        />
       </div>
 
       <div className="section-heading">
@@ -299,7 +310,9 @@ function Offers({
 }) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const gameListings = listings.filter((l) => l.game_id === game.id);
-  const filtered = gameListings.filter((l) => activeCategory === "all" || l.category === activeCategory);
+  const filtered = gameListings.filter(
+    (l) => activeCategory === "all" || l.category === activeCategory,
+  );
 
   return (
     <section className="screen">
@@ -426,8 +439,8 @@ function Detail({
 
       {showSecurityNotice && (
         <div className="security-toast" role="status">
-          Гарантия безопасности Azerigame: деньги переводятся продавцу только после того, как вы лично проверите
-          аккаунт!
+          Гарантия безопасности Azerigame: деньги переводятся продавцу только после того, как вы
+          лично проверите аккаунт!
         </div>
       )}
 
@@ -515,8 +528,16 @@ function Profile({
       <div className="nickname-editor">
         <label htmlFor="profile-nickname">Ваш никнейм</label>
         <div>
-          <input id="profile-nickname" value={nickname} onChange={(e) => setNickname(e.target.value)} minLength={2} />
-          <button type="button" onClick={() => nickname.trim().length > 1 && onNicknameSaved(nickname.trim())}>
+          <input
+            id="profile-nickname"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            minLength={2}
+          />
+          <button
+            type="button"
+            onClick={() => nickname.trim().length > 1 && onNicknameSaved(nickname.trim())}
+          >
             Сохранить
           </button>
         </div>
@@ -573,7 +594,8 @@ function Chats({
   const activeChat = chats.find((chat) => chat.id === activeChatId) ?? null;
 
   if (activeChat) {
-    const participantName = activeChat.seller_id === currentUserId ? activeChat.buyerName : activeChat.sellerName;
+    const participantName =
+      activeChat.seller_id === currentUserId ? activeChat.buyerName : activeChat.sellerName;
     return (
       <section className="screen chat-screen">
         <button className="back-button" type="button" onClick={() => setActiveChatId(null)}>
@@ -588,7 +610,10 @@ function Chats({
         </div>
         <div className="chat-messages">
           {activeChat.messages.map((item) => (
-            <div className={`chat-bubble ${item.sender_id === currentUserId ? "mine" : "theirs"}`} key={item.id}>
+            <div
+              className={`chat-bubble ${item.sender_id === currentUserId ? "mine" : "theirs"}`}
+              key={item.id}
+            >
               {item.text}
             </div>
           ))}
@@ -635,9 +660,16 @@ function Chats({
       {chats.length ? (
         <div className="chat-list">
           {chats.map((chat) => (
-            <button className="chat-item" type="button" key={chat.id} onClick={() => setActiveChatId(chat.id)}>
+            <button
+              className="chat-item"
+              type="button"
+              key={chat.id}
+              onClick={() => setActiveChatId(chat.id)}
+            >
               <span className="chat-avatar">
-                {(chat.seller_id === currentUserId ? chat.buyerName : chat.sellerName)[0]?.toUpperCase()}
+                {(chat.seller_id === currentUserId
+                  ? chat.buyerName
+                  : chat.sellerName)[0]?.toUpperCase()}
               </span>
               <div>
                 <b>{chat.seller_id === currentUserId ? chat.buyerName : chat.sellerName}</b>
@@ -753,7 +785,12 @@ function Index() {
               ...chat,
               messages: [
                 ...chat.messages,
-                { id: `${chat.id}-${Date.now()}`, text, sender_id: currentUserId, createdAt: new Date().toISOString() },
+                {
+                  id: `${chat.id}-${Date.now()}`,
+                  text,
+                  sender_id: currentUserId,
+                  createdAt: new Date().toISOString(),
+                },
               ],
             }
           : chat,
@@ -825,7 +862,11 @@ function Index() {
             {favoriteListings.length ? (
               <div className="offer-grid">
                 {favoriteListings.map((listing) => (
-                  <OfferCard key={listing.id} listing={listing} onClick={() => openListing(listing)} />
+                  <OfferCard
+                    key={listing.id}
+                    listing={listing}
+                    onClick={() => openListing(listing)}
+                  />
                 ))}
               </div>
             ) : (
@@ -853,7 +894,9 @@ function Index() {
               setUser(null);
               setScreen("home");
             }}
-            onNicknameSaved={(nickname) => setUser((current) => (current ? { ...current, displayName: nickname } : current))}
+            onNicknameSaved={(nickname) =>
+              setUser((current) => (current ? { ...current, displayName: nickname } : current))
+            }
           />
         )}
       </div>

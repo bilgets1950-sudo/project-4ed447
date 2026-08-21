@@ -12,7 +12,10 @@ export function ListingGallery({ photos, title }: { photos: string[]; title: str
 
   if (!count) {
     return (
-      <div className="gallery gallery-empty" style={{ minHeight: 180, borderRadius: 17, margin: "16px 0" }}>
+      <div
+        className="gallery gallery-empty"
+        style={{ minHeight: 180, borderRadius: 17, margin: "16px 0" }}
+      >
         <ImageOff size={28} />
         <span>Продавец не прикрепил скриншоты</span>
       </div>
@@ -38,7 +41,11 @@ export function ListingGallery({ photos, title }: { photos: string[]; title: str
         <div className="gallery-track" style={{ transform: `translateX(-${index * 100}%)` }}>
           {photos.map((photo, i) => (
             <div className="gallery-slide" key={`${photo}-${i}`}>
-              <img src={photo} alt={`${title} — скриншот ${i + 1}`} loading={i === 0 ? "eager" : "lazy"} />
+              <img
+                src={photo}
+                alt={`${title} — скриншот ${i + 1}`}
+                loading={i === 0 ? "eager" : "lazy"}
+              />
             </div>
           ))}
         </div>
@@ -49,10 +56,20 @@ export function ListingGallery({ photos, title }: { photos: string[]; title: str
 
         {count > 1 && (
           <>
-            <button type="button" className="gallery-arrow prev" aria-label="Предыдущее фото" onClick={() => go(index - 1)}>
+            <button
+              type="button"
+              className="gallery-arrow prev"
+              aria-label="Предыдущее фото"
+              onClick={() => go(index - 1)}
+            >
               <ChevronLeft size={18} />
             </button>
-            <button type="button" className="gallery-arrow next" aria-label="Следующее фото" onClick={() => go(index + 1)}>
+            <button
+              type="button"
+              className="gallery-arrow next"
+              aria-label="Следующее фото"
+              onClick={() => go(index + 1)}
+            >
               <ChevronRight size={18} />
             </button>
             <div className="gallery-dots">
